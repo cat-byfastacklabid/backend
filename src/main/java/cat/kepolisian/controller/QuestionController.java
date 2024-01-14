@@ -2,6 +2,9 @@ package cat.kepolisian.controller;
 
 import cat.kepolisian.dto.questionoptions.GetQuestionOptionDtoRes;
 import cat.kepolisian.service.AnswerService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("kepolisian/api/v1/cat-test")
+@Tag(name = "questions")
 public class QuestionController {
-    private AnswerService answerService;
+    private final AnswerService answerService;
 
     @Autowired
     public QuestionController(AnswerService answerService){

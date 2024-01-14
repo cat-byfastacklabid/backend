@@ -5,6 +5,7 @@ import cat.kepolisian.dao.QuestionDao;
 import cat.kepolisian.entity.Question;
 import cat.kepolisian.entity.QuestionType;
 import cat.kepolisian.repository.QuestionRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;

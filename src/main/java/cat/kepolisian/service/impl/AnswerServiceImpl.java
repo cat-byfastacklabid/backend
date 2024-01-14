@@ -12,6 +12,7 @@ import cat.kepolisian.entity.Answer;
 import cat.kepolisian.entity.Question;
 import cat.kepolisian.entity.QuestionType;
 import cat.kepolisian.service.AnswerService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +21,9 @@ import java.util.List;
 
 @Service
 public class AnswerServiceImpl extends BaseServiceImpl implements AnswerService {
-    private AnswerDao answerDao;
-    private QuestionDao questionDao;
-    private QuestionTypeDao questionTypeDao;
+    private final AnswerDao answerDao;
+    private final QuestionDao questionDao;
+    private final QuestionTypeDao questionTypeDao;
 
     @Autowired
     public AnswerServiceImpl(AnswerDao answerDao, QuestionDao questionDao, QuestionTypeDao questionTypeDao){
@@ -40,14 +41,12 @@ public class AnswerServiceImpl extends BaseServiceImpl implements AnswerService 
         List<Question> listQuestion = questionDao.getByQuestionType(questionType);
         List<GetOptionsFromQuestionDtoDataRes> listAnswerFromQuestion = new ArrayList<>();
 
-        for(int i = 0; i < listQuestion.size(); i++ ) {
-            Question question = listQuestion.get(i);
+        for (Question question : listQuestion) {
             GetOptionsFromQuestionDtoDataRes answerFromQuestion = new GetOptionsFromQuestionDtoDataRes();
 
             List<Answer> listAnswer = answerDao.getByQuestionId(question.getId());
             List<GetQuestionOptionDtoDataRes> listAnswerData = new ArrayList<>();
-            for (int j = 0; j < listAnswer.size(); j++){
-                Answer answer = listAnswer.get(j);
+            for (Answer answer : listAnswer) {
                 GetQuestionOptionDtoDataRes answerData = new GetQuestionOptionDtoDataRes();
 
                 answerData.setId(answer.getId());
@@ -79,14 +78,12 @@ public class AnswerServiceImpl extends BaseServiceImpl implements AnswerService 
         List<Question> listQuestion = questionDao.getByQuestionType(questionType);
         List<GetOptionsFromQuestionDtoDataRes> listAnswerFromQuestion = new ArrayList<>();
 
-        for(int i = 0; i < listQuestion.size(); i++ ) {
-            Question question = listQuestion.get(i);
+        for (Question question : listQuestion) {
             GetOptionsFromQuestionDtoDataRes answerFromQuestion = new GetOptionsFromQuestionDtoDataRes();
 
             List<Answer> listAnswer = answerDao.getByQuestionId(question.getId());
             List<GetQuestionOptionDtoDataRes> listAnswerData = new ArrayList<>();
-            for (int j = 0; j < listAnswer.size(); j++){
-                Answer answer = listAnswer.get(j);
+            for (Answer answer : listAnswer) {
                 GetQuestionOptionDtoDataRes answerData = new GetQuestionOptionDtoDataRes();
 
                 answerData.setId(answer.getId());
@@ -103,7 +100,7 @@ public class AnswerServiceImpl extends BaseServiceImpl implements AnswerService 
             listAnswerFromQuestion.add(answerFromQuestion);
         }
 
-        getQuestionAkademik.setQuizTitle("Test Kepribadian");
+        getQuestionAkademik.setQuizTitle("Test Akademik");
         getQuestionAkademik.setQuestion(listAnswerFromQuestion);
 
         return getQuestionAkademik;
@@ -118,14 +115,12 @@ public class AnswerServiceImpl extends BaseServiceImpl implements AnswerService 
         List<Question> listQuestion = questionDao.getByQuestionType(questionType);
         List<GetOptionsFromQuestionDtoDataRes> listAnswerFromQuestion = new ArrayList<>();
 
-        for(int i = 0; i < listQuestion.size(); i++ ) {
-            Question question = listQuestion.get(i);
+        for (Question question : listQuestion) {
             GetOptionsFromQuestionDtoDataRes answerFromQuestion = new GetOptionsFromQuestionDtoDataRes();
 
             List<Answer> listAnswer = answerDao.getByQuestionId(question.getId());
             List<GetQuestionOptionDtoDataRes> listAnswerData = new ArrayList<>();
-            for (int j = 0; j < listAnswer.size(); j++){
-                Answer answer = listAnswer.get(j);
+            for (Answer answer : listAnswer) {
                 GetQuestionOptionDtoDataRes answerData = new GetQuestionOptionDtoDataRes();
 
                 answerData.setId(answer.getId());
@@ -142,7 +137,7 @@ public class AnswerServiceImpl extends BaseServiceImpl implements AnswerService 
             listAnswerFromQuestion.add(answerFromQuestion);
         }
 
-        getQuestionKetahanan.setQuizTitle("Test Kepribadian");
+        getQuestionKetahanan.setQuizTitle("Test Ketahanan");
         getQuestionKetahanan.setQuestion(listAnswerFromQuestion);
 
         return getQuestionKetahanan;

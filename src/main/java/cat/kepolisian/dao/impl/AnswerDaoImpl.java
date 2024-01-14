@@ -4,6 +4,7 @@ import cat.kepolisian.core.BaseDaoImpl;
 import cat.kepolisian.dao.AnswerDao;
 import cat.kepolisian.entity.Answer;
 import cat.kepolisian.repository.AnswerRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Profile("JpaHQL")
 @Repository
-public class AnswerImpl extends BaseDaoImpl implements AnswerDao {
+public class AnswerDaoImpl extends BaseDaoImpl implements AnswerDao {
     private AnswerRepository answerRepository;
 
     @Autowired

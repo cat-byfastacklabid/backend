@@ -1,11 +1,11 @@
 package cat.kepolisian.core;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 public class BaseDaoImpl{
 	protected EntityManager em;

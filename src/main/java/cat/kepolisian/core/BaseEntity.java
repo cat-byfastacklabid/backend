@@ -1,10 +1,12 @@
 package cat.kepolisian.core;
 
-import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
+import java.time.LocalDateTime;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+
+import lombok.Data;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @MappedSuperclass

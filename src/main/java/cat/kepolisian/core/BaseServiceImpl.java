@@ -1,6 +1,7 @@
 package cat.kepolisian.core;
 
 import cat.kepolisian.security.AuthPrincipal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Random;

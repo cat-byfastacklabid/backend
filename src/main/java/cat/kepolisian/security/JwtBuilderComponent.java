@@ -1,11 +1,5 @@
 package cat.kepolisian.security;
 
-import java.sql.Timestamp;
-import java.time.Duration;
-import java.time.LocalDateTime;
-
-import javax.crypto.SecretKey;
-
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.JwtBuilder;
@@ -13,9 +7,16 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
+import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDateTime;
+
+import javax.crypto.SecretKey;
+
+
 @Component
 public class JwtBuilderComponent {
-	private SecretKey secretKey;
+	private final SecretKey secretKey;
 	
 	public JwtBuilderComponent() {
 		secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);

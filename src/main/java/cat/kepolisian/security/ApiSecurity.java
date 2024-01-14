@@ -3,6 +3,7 @@ package cat.kepolisian.security;
 import cat.kepolisian.config.ObjectConfig;
 import cat.kepolisian.dao.UserDao;
 import cat.kepolisian.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -40,11 +41,12 @@ public class ApiSecurity extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable().authorizeRequests().anyRequest().authenticated();
-		AuthenticationFilter authenticationFilter = new AuthenticationFilter(super.authenticationManager(), jwtBuilderComponent, userDao);
-		http.addFilter(authenticationFilter);
-		AuthorizationFilter authorizationFilter = new AuthorizationFilter(super.authenticationManager(), jwtBuilderComponent);
-		http.addFilter(authorizationFilter);
+		http.cors().and().csrf().disable()
+				.authorizeRequests()
+				.anyRequest().authenticated()
+				.and()
+				.addFilter(new AuthenticationFilter(super.authenticationManager(), jwtBuilderComponent, userDao))
+				.addFilter(new AuthorizationFilter(super.authenticationManager(), jwtBuilderComponent));
 	}
 	
 	@Override

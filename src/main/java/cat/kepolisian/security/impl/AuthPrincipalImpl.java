@@ -1,6 +1,7 @@
 package cat.kepolisian.security.impl;
 
 import cat.kepolisian.security.AuthPrincipal;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;

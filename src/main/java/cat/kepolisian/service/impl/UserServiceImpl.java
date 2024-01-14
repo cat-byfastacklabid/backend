@@ -1,8 +1,5 @@
 package cat.kepolisian.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cat.kepolisian.core.BaseServiceImpl;
 import cat.kepolisian.constant.RoleEnum;
 import cat.kepolisian.dao.RoleDao;
@@ -11,18 +8,22 @@ import cat.kepolisian.dto.user.*;
 import cat.kepolisian.entity.Role;
 import cat.kepolisian.entity.User;
 import cat.kepolisian.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 @Service
 public class UserServiceImpl extends BaseServiceImpl implements UserService {
-	private UserDao userDao;
-	private RoleDao roleDao;
+	private final UserDao userDao;
+	private final RoleDao roleDao;
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
@@ -43,19 +44,18 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 		List<User> users = userDao.getAll();
 		List<GetAllUserDtoDataRes> listUser = new ArrayList<>();
 
-		for (int i = 0; i < users.size(); i++) {
-			User user = users.get(i);
-			GetAllUserDtoDataRes data = new GetAllUserDtoDataRes();
+        for (User user : users) {
+            GetAllUserDtoDataRes data = new GetAllUserDtoDataRes();
 
-			data.setId(user.getId());
-			data.setUsername(user.getUsername());
-			data.setPassword(user.getPassword());
-			data.setRoleName(user.getRole().getRoleName());
-			data.setVersion(user.getVersion());
-			data.setIsActive(user.getIsActive());
+            data.setId(user.getId());
+            data.setUsername(user.getUsername());
+            data.setPassword(user.getPassword());
+            data.setRoleName(user.getRole().getRoleName());
+            data.setVersion(user.getVersion());
+            data.setIsActive(user.getIsActive());
 
-			listUser.add(data);
-		}
+            listUser.add(data);
+        }
 
 		getAll.setData(listUser);
 		getAll.setMsg(null);

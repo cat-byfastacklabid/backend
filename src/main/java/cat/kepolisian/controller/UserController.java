@@ -1,5 +1,8 @@
 package cat.kepolisian.controller;
 
+import cat.kepolisian.dto.user.*;
+import cat.kepolisian.service.UserService;
+
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cat.kepolisian.service.UserService;
-import cat.kepolisian.dto.user.*;
-
 @RestController
 @RequestMapping("users")
 @Tag(name = "User")
 public class UserController {
-	private UserService userService;
+	private final UserService userService;
 	
 	@Autowired
 	public UserController(UserService userService) {

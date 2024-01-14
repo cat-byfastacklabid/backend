@@ -1,7 +1,5 @@
 package cat.kepolisian.dao.impl;
 
-import java.util.List;
-
 import cat.kepolisian.dao.UserDao;
 import cat.kepolisian.entity.User;
 import cat.kepolisian.repository.UserRepository;
@@ -9,6 +7,8 @@ import cat.kepolisian.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Profile("JpaHQL")
 @Repository

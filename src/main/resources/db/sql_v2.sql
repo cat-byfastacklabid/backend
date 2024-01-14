@@ -8,7 +8,7 @@ CREATE TABLE public.history (
 	updated_at timestamp NULL,
 	"version" int4 default 0,
 	is_active bool default true,
-	CONSTRAINT history_question_fk foreign KEY (question_type) references question_type(id)
+	CONSTRAINT history_question_fk foreign KEY (question_type_id) references question_type(id)
 );
 
 CREATE TABLE public.history_detail (

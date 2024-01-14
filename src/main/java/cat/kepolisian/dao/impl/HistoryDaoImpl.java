@@ -4,6 +4,7 @@ import cat.kepolisian.core.BaseDaoImpl;
 import cat.kepolisian.dao.HistoryDao;
 import cat.kepolisian.entity.History;
 import cat.kepolisian.repository.HistoryRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;

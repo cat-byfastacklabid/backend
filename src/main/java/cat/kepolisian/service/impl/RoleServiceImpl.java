@@ -1,10 +1,5 @@
 package cat.kepolisian.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.transaction.Transactional;
-
 import cat.kepolisian.core.BaseServiceImpl;
 import cat.kepolisian.dao.RoleDao;
 import cat.kepolisian.entity.Role;
@@ -14,10 +9,14 @@ import cat.kepolisian.dto.role.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
 
 @Service
 public class RoleServiceImpl extends BaseServiceImpl implements RoleService {
-	private RoleDao roleDao;
+	private final RoleDao roleDao;
 	
 	@Autowired
 	public RoleServiceImpl(RoleDao roleDao) {
@@ -31,17 +30,16 @@ public class RoleServiceImpl extends BaseServiceImpl implements RoleService {
 		List<Role> roles = roleDao.getAll();
 		List<GetAllRoleDtoDataRes> listRole = new ArrayList<>();
 
-		for (int i = 0; i < roles.size(); i++) {
-			Role role = roles.get(i);
-			GetAllRoleDtoDataRes data = new GetAllRoleDtoDataRes();
+        for (Role role : roles) {
+            GetAllRoleDtoDataRes data = new GetAllRoleDtoDataRes();
 
-			data.setId(role.getId());
-			data.setRoleName(role.getRoleName());
-			data.setVersion(role.getVersion());
-			data.setIsActive(role.getIsActive());
+            data.setId(role.getId());
+            data.setRoleName(role.getRoleName());
+            data.setVersion(role.getVersion());
+            data.setIsActive(role.getIsActive());
 
-			listRole.add(data);
-		}
+            listRole.add(data);
+        }
 		
 		getAll.setData(listRole);
 		getAll.setMsg(null);
@@ -76,13 +74,7 @@ public class RoleServiceImpl extends BaseServiceImpl implements RoleService {
 		
 		role.setRoleCode(data.getRoleCode());
 		role.setRoleName(data.getRoleName());
-
-//		if(getId() != null){
-//			role.setCreatedBy(getId());
-//		}else {
-			role.setCreatedBy("Admin");
-//		}
-
+		role.setCreatedBy(getId());
 		Role insertRole = roleDao.save(role);
 
 		InsertRoleDtoDataRes dataDto = new InsertRoleDtoDataRes();

@@ -24,7 +24,7 @@ public class HistoryServiceImpl extends BaseServiceImpl implements HistoryServic
     private final AnswerDao answerDao;
     private final HistoryDao historyDao;
     private final HistoryDetailDao detailDao;
-    private Double tempValue = 0.0;
+    private Double tempValue;
     private static final String SUCCESS_MSG = "Answer successfully created";
 
     @Autowired
@@ -39,6 +39,7 @@ public class HistoryServiceImpl extends BaseServiceImpl implements HistoryServic
 
     @Override
     public InsertHistoryAnswerDtoRes insertAnswerKepribadian(InsertHistoryAnswerDtoReq data) throws Exception {
+        tempValue = 0.0;
         InsertHistoryAnswerDtoRes insert = new InsertHistoryAnswerDtoRes();
 
         History history = new History();
@@ -85,6 +86,7 @@ public class HistoryServiceImpl extends BaseServiceImpl implements HistoryServic
 
     @Override
     public InsertHistoryAnswerDtoRes insertAnswerAkademik(InsertHistoryAnswerDtoReq data) throws Exception {
+        tempValue = 0.0;
         InsertHistoryAnswerDtoRes insert = new InsertHistoryAnswerDtoRes();
 
         History history = new History();
@@ -131,6 +133,7 @@ public class HistoryServiceImpl extends BaseServiceImpl implements HistoryServic
 
     @Override
     public InsertHistoryAnswerDtoRes insertAnswerKetahanan(InsertHistoryAnswerDtoReq data) throws Exception {
+        tempValue = 0.0;
         InsertHistoryAnswerDtoRes insert = new InsertHistoryAnswerDtoRes();
 
         History history = new History();
